@@ -12,7 +12,7 @@ Essential SQL patterns and best practices for querying, reporting, and tuning.
 - Aggregations, String and Date Functions
 - Performance tips, Data cleaning, and more
 
-### 🐍 [Python Cheat Sheets](./python)
+### 🐍 [Python Cheat Sheets]https://github.com/floresql/Cheat_Sheets/tree/main/Python)
 In-progress collection for data analysis, scripting, and backend dev.
 - Pandas & NumPy
 - Data visualization (Matplotlib, Seaborn)
