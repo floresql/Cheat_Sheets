@@ -1,5 +1,8 @@
 # 🐼 Pandas Cheat Sheet
 
+## 📌 Description
+High-performance data manipulation tool for tabular data. Use it when cleaning, transforming, or analyzing datasets.
+
 ## 📥 Importing
 ```python
 import pandas as pd
@@ -43,5 +46,3 @@ df.rename(columns={"old": "new"}, inplace=True)
 ```python
 pd.merge(df1, df2, on="id", how="left")
 ```
-
-📚 Learn more: [Pandas Docs](https://pandas.pydata.org/)

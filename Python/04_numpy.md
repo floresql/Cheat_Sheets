@@ -1,5 +1,8 @@
 # 🔢 NumPy Cheat Sheet
 
+## 📌 Description
+Core library for numerical operations in Python. Use it for math-heavy, vectorized computations.
+
 ## 📥 Importing
 ```python
 import numpy as np
@@ -37,5 +40,3 @@ arr[:, 1]
 ```python
 arr.mean(), arr.std(), arr.sum()
 ```
-
-📚 Learn more: [NumPy Docs](https://numpy.org/doc/)
