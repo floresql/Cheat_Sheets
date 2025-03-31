@@ -1,11 +1,4 @@
 # SQL CTEs & Subqueries Cheat Sheet
-## 📌 Description
-Explains subqueries and Common Table Expressions (CTEs), including recursion.
-
-## 🚀 When to Use
-Use to break complex queries into logical parts or handle hierarchical data.
-
-
 
 ## 📌 Description
 Use CTEs and subqueries to break down complex logic and reuse query structures.
