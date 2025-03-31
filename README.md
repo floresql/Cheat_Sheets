@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="./cheat-sheet-repo-banner.png" alt="Cheat Sheet Repository" />
-</p>
-
 # 📦 Master Cheat Sheet Repository
 
 Welcome to the ultimate cheat sheet collection — your go-to toolkit for analytics, development, and data wizardry. This is your **one repo to rule them all**.
