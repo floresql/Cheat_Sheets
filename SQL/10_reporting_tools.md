@@ -1,16 +1,60 @@
-# SQL for Reporting Tools Cheat Sheet (Power BI / Tableau / SSRS)
+# SQL for Reporting Tools Cheat Sheet
 
-## 📌 Description
-Tips and patterns for writing SQL when connected to BI tools. Use this to optimize dashboard queries and ensure compatibility.
+Write efficient and flexible SQL for Power BI, Tableau, SSRS, and other tools.
 
-...
-
-📚 Learn more at:
-- [Tableau SQL Best Practices](https://help.tableau.com/)
-- [Power BI SQL Optimization](https://docs.microsoft.com/en-us/power-bi/)
 ---
 
-## 📌 Use Cases
-- Creating reusable parameterized queries
-- Optimizing SQL for dashboards
-- Pre-processing heavy aggregations
+## 🔹 Parameterization
+
+**Description**: Filter queries using dynamic values.
+
+**When to Use**: Making SQL reusable in dashboards.
+
+```sql
+SELECT * FROM orders WHERE order_date BETWEEN @StartDate AND @EndDate;
+```
+
+---
+
+## 🔸 Aliases and Naming
+
+**Description**: Rename fields for user-friendly display.
+
+**When to Use**: When integrating SQL into visualization tools.
+
+```sql
+SELECT customer_id AS 'Customer ID', SUM(sales) AS 'Total Sales' FROM orders GROUP BY customer_id;
+```
+
+---
+
+## 🔹 Aggregation Logic
+
+**Description**: Pre-calculate metrics for visuals.
+
+**When to Use**: To reduce dashboard load time.
+
+```sql
+SELECT region, SUM(sales) AS total_sales FROM orders GROUP BY region;
+```
+
+---
+
+## 🔸 Optimize with Views
+
+**Description**: Save reusable SQL logic as views.
+
+**When to Use**: Simplify report-building and boost performance.
+
+---
+
+## 🧠 Use Cases
+- Driving Power BI/Tableau dashboards
+- SSRS reports with parameters
+- Prepping clean datasets for visualization
+
+---
+
+📚 Learn more at:
+- [Power BI SQL Best Practices](https://docs.microsoft.com/en-us/power-bi/)
+- [Tableau Custom SQL](https://help.tableau.com/)
