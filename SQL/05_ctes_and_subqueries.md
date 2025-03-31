@@ -20,3 +20,22 @@ SELECT * FROM nums;
 ```
 
 📚 Learn more at [DataCamp](https://www.datacamp.com/tutorial/sql-cte-recursive)
+---
+
+## 📌 More Examples
+### Nested Subquery Example
+```sql
+SELECT name FROM employees WHERE department_id = (
+  SELECT department_id FROM departments WHERE name = 'Sales'
+);
+```
+
+### Recursive CTE for factorial:
+```sql
+WITH RECURSIVE factorial(n, fact) AS (
+  SELECT 1, 1
+  UNION ALL
+  SELECT n + 1, (n + 1) * fact FROM factorial WHERE n < 5
+)
+SELECT * FROM factorial;
+```

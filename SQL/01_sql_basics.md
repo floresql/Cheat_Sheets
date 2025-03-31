@@ -15,3 +15,10 @@ LIMIT n OFFSET m;
 ...
 
 📚 Learn more at [SQLBolt](https://sqlbolt.com) or [W3Schools SQL Tutorial](https://www.w3schools.com/sql/)
+---
+
+## 📌 Use Cases
+- Exploring tables
+- Filtering data with WHERE
+- Sorting with ORDER BY
+- Paginating results with LIMIT/OFFSET

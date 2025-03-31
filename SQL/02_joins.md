@@ -9,3 +9,9 @@ Use joins to retrieve related data from multiple tables based on key relationshi
 ...
 
 📚 Learn more at [DataCamp](https://www.datacamp.com)
+---
+
+## 📌 Use Cases
+- Merging user and order data
+- Combining dimensional and fact tables in star schema
+- Filtering records using semi/anti joins

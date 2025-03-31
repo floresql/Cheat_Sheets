@@ -13,3 +13,9 @@ Window functions allow you to perform calculations across rows related to the cu
 - Filtering top-N per group using `ROW_NUMBER()`
 
 📚 Learn more at [Mode SQL Tutorial](https://mode.com/sql-tutorial/sql-window-functions/)
+---
+
+## 📌 Use Cases
+- Calculating ranks in contests
+- Generating running totals
+- Comparing current vs previous row in time series
