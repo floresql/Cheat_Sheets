@@ -1,40 +1,15 @@
 # SQL CTEs & Subqueries Cheat Sheet
 
-## 🧠 Subqueries
-
-### Scalar Subquery
-Returns a single value.
-```sql
-SELECT name
-FROM employees
-WHERE salary > (SELECT AVG(salary) FROM employees);
-```
-
-### Correlated Subquery
-Depends on outer query.
-```sql
-SELECT name
-FROM employees e
-WHERE salary > (
-  SELECT AVG(salary) 
-  FROM employees 
-  WHERE department_id = e.department_id
-);
-```
-
----
+## 📌 Description
+Use CTEs and subqueries to break down complex logic and reuse query structures.
 
 ## 🔄 Common Table Expressions (CTEs)
-
 ### Simple CTE
-```sql
-WITH high_salary AS (
-  SELECT * FROM employees WHERE salary > 100000
-)
-SELECT name FROM high_salary;
-```
+Good for breaking logic into steps, similar to a SQL variable.
 
 ### Recursive CTE
+Used for hierarchical or tree-structured data, such as organizational charts or parent-child tables.
+
 ```sql
 WITH RECURSIVE nums AS (
   SELECT 1 AS n
@@ -43,12 +18,5 @@ WITH RECURSIVE nums AS (
 )
 SELECT * FROM nums;
 ```
-
----
-
-## 🧩 Use Cases
-- Breaking down complex queries
-- Improving readability
-- Recursive hierarchies
 
 📚 Learn more at [DataCamp](https://www.datacamp.com/tutorial/sql-cte-recursive)
