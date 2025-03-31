@@ -1,5 +1,8 @@
 # 📊 Matplotlib & Seaborn Cheat Sheet
 
+## 📌 Description
+Plotting libraries for visualizing data. Use Matplotlib for lower-level control and Seaborn for statistical plots and style.
+
 ## 📥 Importing
 ```python
 import matplotlib.pyplot as plt
@@ -39,5 +42,3 @@ plt.xlabel("X Axis")
 plt.ylabel("Y Axis")
 sns.set_style("whitegrid")
 ```
-
-📚 Learn more: [Seaborn Docs](https://seaborn.pydata.org/)

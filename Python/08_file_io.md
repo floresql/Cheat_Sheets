@@ -1,5 +1,8 @@
 # 📂 Python File I/O Cheat Sheet
 
+## 📌 Description
+How to read/write files in different formats. Use for loading data or saving outputs.
+
 ## 📄 Read/Write CSV
 ```python
 import pandas as pd
@@ -23,5 +26,3 @@ df = pd.read_json("data.json")
 with open("file.txt", "r") as file:
     content = file.read()
 ```
-
-📚 Learn more: [Python File Handling](https://docs.python.org/3/tutorial/inputoutput.html)

@@ -1,5 +1,8 @@
 # 🐞 Python Debugging & Logging Cheat Sheet
 
+## 📌 Description
+Track issues and errors in code. Use when troubleshooting, testing, or deploying apps.
+
 ## 🔍 Try/Except Blocks
 ```python
 try:
@@ -11,7 +14,6 @@ except ZeroDivisionError as e:
 ## 🐾 Logging
 ```python
 import logging
-
 logging.basicConfig(level=logging.INFO)
 logging.info("This is an info message")
 logging.error("Something went wrong!")
@@ -21,5 +23,3 @@ logging.error("Something went wrong!")
 ```python
 import pdb; pdb.set_trace()
 ```
-
-📚 Learn more: [Python Logging Docs](https://docs.python.org/3/library/logging.html)

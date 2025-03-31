@@ -1,5 +1,8 @@
 # 🔎 Python Regex Cheat Sheet
 
+## 📌 Description
+Find and manipulate text using patterns. Use in validation, extraction, or complex filtering.
+
 ## 📥 Importing
 ```python
 import re
@@ -31,5 +34,3 @@ re.sub(r"\d+", "", "abc123")  # Output: 'abc'
 pattern = r"\b[A-Za-z]+@\w+\.com\b"
 emails = re.findall(pattern, text)
 ```
-
-📚 Learn more: [Regex101](https://regex101.com/)

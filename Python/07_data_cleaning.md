@@ -1,5 +1,8 @@
 # 🧹 Python Data Cleaning Cheat Sheet
 
+## 📌 Description
+Common cleaning tasks for Pandas. Use it to prep raw data for analysis or modeling.
+
 ## 🔍 Missing Values
 ```python
 df.isnull().sum()
@@ -26,5 +29,3 @@ df["col"] = df["col"].astype(int)
 ```python
 df.drop_duplicates(inplace=True)
 ```
-
-📚 Learn more: [Pandas Cleaning Docs](https://pandas.pydata.org/pandas-docs/stable/user_guide/missing_data.html)
