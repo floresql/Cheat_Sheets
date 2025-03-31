@@ -6,7 +6,7 @@ Welcome to the ultimate cheat sheet collection — your go-to toolkit for analyt
 
 ## 📚 Current Collections
 
-### 🐘 [SQL Cheat Sheets](./sql)
+### 🐘 [SQL Cheat Sheets](https://github.com/floresql/Cheat_Sheets/tree/main/SQL)
 Essential SQL patterns and best practices for querying, reporting, and tuning.
 - Joins, Window Functions, CTEs
 - Aggregations, String and Date Functions
