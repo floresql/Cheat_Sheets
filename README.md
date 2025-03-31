@@ -6,13 +6,13 @@ Welcome to the ultimate cheat sheet collection — your go-to toolkit for analyt
 
 ## 📚 Current Collections
 
-### 🐘 [SQL Cheat Sheets](./sql-cheat-sheets)
+### 🐘 [SQL Cheat Sheets](./sql)
 Essential SQL patterns and best practices for querying, reporting, and tuning.
 - Joins, Window Functions, CTEs
 - Aggregations, String and Date Functions
 - Performance tips, Data cleaning, and more
 
-### 🐍 [Python Cheat Sheets](./python-cheat-sheets)
+### 🐍 [Python Cheat Sheets](./python)
 In-progress collection for data analysis, scripting, and backend dev.
 - Pandas & NumPy
 - Data visualization (Matplotlib, Seaborn)
