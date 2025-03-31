@@ -1,8 +1,3 @@
-# Updated README with the banner reference at the top
-updated_main_readme_content = """<p align="center">
-  <img src="./cheat-sheet-repo-banner.png" alt="Cheat Sheet Repository" />
-</p>
-
 # 📦 Master Cheat Sheet Repository
 
 Welcome to the ultimate cheat sheet collection — your go-to toolkit for analytics, development, and data wizardry. This is your **one repo to rule them all**.
@@ -11,13 +6,13 @@ Welcome to the ultimate cheat sheet collection — your go-to toolkit for analyt
 
 ## 📚 Current Collections
 
-### 🐘 [SQL Cheat Sheets](./sql-cheat-sheets)
+### 🐘 [SQL Cheat Sheets](https://github.com/floresql/Cheat_Sheets/tree/main/SQL)
 Essential SQL patterns and best practices for querying, reporting, and tuning.
 - Joins, Window Functions, CTEs
 - Aggregations, String and Date Functions
 - Performance tips, Data cleaning, and more
 
-### 🐍 [Python Cheat Sheets](./python-cheat-sheets)
+### 🐍 [Python Cheat Sheets](./python)
 In-progress collection for data analysis, scripting, and backend dev.
 - Pandas & NumPy
 - Data visualization (Matplotlib, Seaborn)
@@ -35,24 +30,4 @@ In-progress collection for data analysis, scripting, and backend dev.
 
 ---
 
-## ✅ How to Use
-- Clone or fork this repo
-- Navigate into the folder you need
-- Use the `.md` files in any markdown viewer, editor, or browser
-- Copy and paste code as needed
-
----
-
-## 🤝 Contributing
-This repo is a living reference. Found something missing? Got a better snippet? Open a pull request or drop an issue. Let's build this out together.
-
----
-
 Made with ☕, frustration, and a lot of Ctrl+Z.
-"""
-
-# Overwrite the README with the banner included
-readme_path = Path("/mnt/data/Master_README.md")
-readme_path.write_text(updated_main_readme_content)
-
-readme_path
