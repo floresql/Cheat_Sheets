@@ -1,6 +1,13 @@
 # SQL Window Functions Cheat Sheet
 
 ## 📌 Description
+Details advanced SQL functions that operate over a window of rows.
+
+## 🚀 When to Use
+Use for ranking, running totals, and comparing row values.
+
+
+## 📌 Description
 Window functions allow you to perform calculations across rows related to the current row. Use this for running totals, rankings, and accessing previous/next rows without collapsing data.
 
 ...

@@ -1,6 +1,13 @@
 # SQL Joins & Set Operators Cheat Sheet
 
 ## 📌 Description
+Explains how to combine rows from two or more tables using joins.
+
+## 🚀 When to Use
+Use this when you need to retrieve related data spread across tables.
+
+
+## 📌 Description
 Overview of SQL joins and set operations. Use this to combine, compare, or filter data across multiple tables.
 
 ## 🤝 SQL Joins
