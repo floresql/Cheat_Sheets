@@ -1,10 +1,10 @@
 # SQL Aggregation Cheat Sheet
-
 ## 📌 Description
-Summarizes groups of data using functions like COUNT, SUM, AVG, etc.
+Shows how to summarize groups of data using aggregate functions.
 
 ## 🚀 When to Use
-Use for reporting, KPIs, and grouped insights.
+Use when generating reports, calculating KPIs, or grouping data.
+
 
 
 ## 📌 Description

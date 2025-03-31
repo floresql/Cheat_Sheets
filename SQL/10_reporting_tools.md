@@ -1,10 +1,10 @@
 # SQL for Reporting Tools Cheat Sheet (Power BI / Tableau / SSRS)
-
 ## 📌 Description
-Best practices for writing SQL used in BI tools like Tableau, Power BI, and SSRS.
+SQL patterns and tips for Power BI, Tableau, and SSRS.
 
 ## 🚀 When to Use
-Use when building visuals or parameter-driven dashboards.
+Use when embedding SQL in reporting dashboards or BI tools.
+
 
 
 ## 📌 Description

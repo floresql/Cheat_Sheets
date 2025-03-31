@@ -1,10 +1,10 @@
 # SQL Indexing & Performance Cheat Sheet
-
 ## 📌 Description
-Explains indexing and performance tuning basics.
+Introduces indexing strategies and performance tuning.
 
 ## 🚀 When to Use
-Use to speed up slow queries or optimize large datasets.
+Use to speed up queries and improve SQL performance.
+
 
 
 ## 📌 Description

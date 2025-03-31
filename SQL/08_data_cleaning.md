@@ -1,10 +1,10 @@
 # SQL Data Cleaning Cheat Sheet
-
 ## 📌 Description
-Techniques for preparing messy or inconsistent data in SQL.
+Techniques to clean and prep data directly in SQL.
 
 ## 🚀 When to Use
-Use before analysis or building dashboards.
+Use this before analysis, dashboarding, or exporting data.
+
 
 
 ## 📌 Description

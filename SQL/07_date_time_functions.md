@@ -1,10 +1,10 @@
 # SQL Date & Time Functions Cheat Sheet
-
 ## 📌 Description
-Focuses on date and time calculations in SQL.
+Focuses on functions for working with dates and times.
 
 ## 🚀 When to Use
-Use for time-based filtering, bucketing, or calculations.
+Use when filtering by time, grouping by date, or doing date math.
+
 
 
 ## 📌 Description

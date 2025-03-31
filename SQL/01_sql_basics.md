@@ -1,10 +1,10 @@
 # 🧠 SQL Basics Cheat Sheet
-
 ## 📌 Description
-Covers the foundational elements of SQL.
+Covers the foundational elements of SQL syntax.
 
 ## 🚀 When to Use
 Use this when writing simple queries or learning SQL from scratch.
+
 
 
 ## 📌 Description

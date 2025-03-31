@@ -1,10 +1,10 @@
 # SQL String Functions Cheat Sheet
-
 ## 📌 Description
-Provides functions for manipulating text in SQL.
+Provides SQL functions for manipulating text.
 
 ## 🚀 When to Use
-Use for cleaning, formatting, or filtering string-based columns.
+Use to clean, format, or filter string data.
+
 
 
 ## 📌 Description
