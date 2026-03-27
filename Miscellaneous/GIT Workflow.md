@@ -109,11 +109,11 @@ A *bare repository* stores Git history and serves as the central hub for collabo
 
 ```sh
 # On the server
+***Make sure you're using UNC Path***
 cd /path/to/git-repos
 mkdir project-name.git
 cd project-name.git
 git init --bare --shared
-git config --global --add safe.directory '%(prefix)///vm0pwneropa6001/GIT_Repos/New_Repo.git'
 git branch -m main
 
 ```
