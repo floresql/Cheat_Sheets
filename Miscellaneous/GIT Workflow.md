@@ -1,4 +1,4 @@
-# Using my GIT Workflow
+# GIT Overview
 
 Git is used for version control, and it's also a powerful tool for collaborative software development. Its  
 distributed architecture allows multiple people to work on a project simultaneously without overwriting each  
@@ -22,7 +22,7 @@ enables developers to share code, review changes, and manage projects from anywh
 
 ## Workflow Summary
 
-This GitLab Flow-inspired workflow uses dedicated branches for development, testing, and production to maintain  
+This GitLab Flow inspired workflow uses dedicated branches for development, testing, and production to maintain  
 stability and prevent accidental changes.
 
 ### Phase 1: Feature Development
