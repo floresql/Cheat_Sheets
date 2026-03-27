@@ -1,4 +1,4 @@
-# Using a GIT Workflow
+# Using my GIT Workflow
 
 Git is used for version control, and it's also a powerful tool for collaborative software development. Its  
 distributed architecture allows multiple people to work on a project simultaneously without overwriting each  
