@@ -7,6 +7,9 @@
 # Install marimo
 pip install marimo
 
+# Upgrade marimo
+uv pip install --upgrade marimo
+
 # Create a new notebook or edit an existing one
 marimo edit
 
