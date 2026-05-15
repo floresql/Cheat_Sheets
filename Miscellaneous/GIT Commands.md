@@ -2,10 +2,10 @@
 
 ## 1. Git Command Reference
 
-### Stuf I am using now
+### Stuff I'm using now
 ```bash
 # Push to Prod
-git push -u prod dev:main
+git push origin dev:main
 ```
 
 
