@@ -1,24 +1,26 @@
-# Git Multi-Remote Workflow Cheat Sheet (GitLab & Prod Server)
+# Git Multi-Remote Workflow Cheat Sheet (GitLab & Windows Network Prod Server)
 
 ## 1. Production Server Configuration
-Set up the bare repository and deployment directory on your remote server-prod.
+Set up the bare repository and deployment directory on your remote network share server via Git Bash.
 
-## On the server
-***Make sure you're using UNC Paths with forward slashes for Git compatibility***
+## Path & Directory Configuration
+***Always use forward slashes (`//`) for UNC network paths within Git Bash.***
 
 ```bash
-# Create a directory for the live website files
+# Create a directory for the live website files on the network share
 mkdir -p //VM0PWNEROPA6001/NewDirName
 ```
 ```bash
-# Create a bare Git repository directory
-cd "//VM0PWNEROPA6001/GIT_Repos"
+# Navigate to the remote network share repository root
+cd //VM0PWNEROPA6001/GIT_Repos
+
+# Create the dedicated repository directory
 mkdir your-project-name.git
 cd your-project-name.git
 ```
 ```bash
-# Initialize the bare repository
-git init --bare --shared
+# Initialize the bare repository with shared workgroup permissions
+git init --bare --shared=all
 git branch -m main
 ```
 ```bash
@@ -27,38 +29,40 @@ nano hooks/post-receive
 ```
 
 ### Post-Receive Hook Script
-Paste the following script into the `hooks/post-receive` file:
+Paste the following exact script into the `hooks/post-receive` file. 
 
 ```bash
 #!/bin/bash
-# Define deployment targets
+# Define deployment targets using Git Bash compatible network paths
 TARGET="//VM0PWNEROPA6001/NewDirName"
 GIT_DIR="//VM0PWNEROPA6001/GIT_Repos/your-project-name.git"
 
-# Deploy the code to the live directory
-mkdir -p \$TARGET
-git --work-tree=\(TARGET --git-dir=\)GIT_DIR checkout -f main
+# Unset conflicting local Git environment variables
+unset GIT_INDEX_FILE
 
-# Optional: Add framework specific tasks here
-# cd \$TARGET && npm install --production
+# Deploy the code to the live directory forcing the main branch layout
+mkdir -p "\$TARGET"
+git --work-tree="\(TARGET" --git-dir="\)GIT_DIR" checkout -f main
+
+# Optional: Add build tasks matching your Windows/IIS server layout
+# cd "\$TARGET" && npm install --production
 ```
 
-Make the hook script executable and exit:
+Make the hook script executable:
 
 ```bash
 chmod +x hooks/post-receive
-exit
 ```
 
 ## 2. Local Machine Authentication & Setup
-Generate SSH keys locally and add them to GitLab for seamless authentication.
+Generate SSH keys locally within Git Bash and link them to GitLab for seamless authentication.
 
 ```bash
-# Generate a secure SSH key pair
+# Generate a secure modern SSH key pair
 ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
 ```bash
-# Start the ssh-agent in the background
+# Start the ssh-agent context inside Git Bash
 eval "\$(ssh-agent -s)"
 ```
 ```bash
@@ -66,22 +70,22 @@ eval "\$(ssh-agent -s)"
 ssh-add ~/.ssh/id_ed25519
 ```
 ```bash
-# Copy the public key to clipboard to paste into GitLab Settings -> SSH Keys
+# Display the public key to copy/paste into GitLab Settings -> SSH Keys
 cat ~/.ssh/id_ed25519.pub
 ```
 
-Configure your local Git repository remotes:
+Configure your local Git repository network remotes:
 
 ```bash
 # Add GitLab as origin
 git remote add origin git@gitlab.spectrumflow.net:username/repo-name.git
 ```
 ```bash
-# Add the bare repo on production server as prod
+# Add the bare network share repository as the prod target
 git remote add prod //VM0PWNEROPA6001/GIT_Repos/your-project-name.git
 ```
 ```bash
-# Verify setup
+# Verify both transport targets are mapped correctly
 git remote -v
 ```
 
@@ -106,7 +110,7 @@ git checkout -b feature/auth-system
 Group related changes into logical, micro-commits rather than giant, single saves.
 
 ```bash
-# Check exactly what changed in the workspace
+# Check exactly what changed in your Git Bash workspace
 git status
 git diff
 ```
@@ -149,8 +153,8 @@ git push origin main
 * **Note:** Pushing to GitLab saves the codebase backup, logs history, and shares updates with your team.
 
 ```bash
-# Step 2: Deploy verified code to your production server (Prod)
+# Step 2: Deploy verified code directly over the network to the production server (Prod)
 git push prod main
 ```
-* **Note:** Pushing to `prod` triggers the server-side `post-receive` script automatically. This updates the live directory immediately.
+* **Note:** Pushing to `prod` triggers the network-based `post-receive` script automatically. This updates the live directory immediately.
 * **Safety Warning:** Never force push (`git push -f`) to the `prod` remote. Force pushing rewritten history can break files on the live server.
