@@ -3,22 +3,26 @@
 ## 1. Production Server Configuration
 Set up the bare repository and deployment directory on your remote server-prod.
 
-```bash
-# On the server
+
+## On the server
 ***Make sure you're using UNC Path***
 
+```bash
 # Create a directory for the live website files
 mkdir -p \\VM0PWNEROPA6001\NewDirName
-
+```
+```bash
 # Create a bare Git repository directory
 cd "\\VM0PWNEROPA6001\GIT_Repos"
 mkdir project-name.git
 cd project-name.git
-
+```
+```bash
 # Initialize the bare repository
 git init --bare --shared
 git branch -m main
-
+```
+```bash
 # Create and open the post-receive hook file
 nano hooks/post-receive
 ```
