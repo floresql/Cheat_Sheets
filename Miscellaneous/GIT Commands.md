@@ -5,7 +5,7 @@
 ### Stuff I'm using now
 ```bash
 # Push to Prod
-git push origin dev:main
+git push prod dev:main
 ```
 
 
