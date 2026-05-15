@@ -57,13 +57,16 @@ Generate SSH keys locally and add them to GitLab for seamless authentication.
 ```bash
 # Generate a secure SSH key pair
 ssh-keygen -t ed25519 -C "your_email@example.com"
-
+```
+```bash
 # Start the ssh-agent in the background
 eval "\$(ssh-agent -s)"
-
+```
+```bash
 # Add your SSH private key to the agent
 ssh-add ~/.ssh/id_ed25519
-
+```
+```bash
 # Copy the public key to clipboard to paste into GitLab Settings -> SSH Keys
 cat ~/.ssh/id_ed25519.pub
 ```
@@ -73,10 +76,12 @@ Configure your local Git repository remotes:
 ```bash
 # Add GitLab as origin
 git remote add origin git@gitlab.spectrumflow.net:username/repo-name.git
-
+```
+```bash
 # Add the bare repo on production server as prod
 git remote add prod \\VM0PWNEROPA6001\GIT_Repos\my-app.git
-
+```
+```bash
 # Verify setup
 git remote -v
 ```
@@ -91,7 +96,8 @@ Never write code directly on the `main` branch.
 # Ensure local main matches GitLab main
 git checkout main
 git pull origin main
-
+```
+```bash
 # Create and switch to a targeted feature branch
 git checkout -b feature/auth-system
 ```
@@ -104,10 +110,12 @@ Group related changes into logical, micro-commits rather than giant, single save
 # Check exactly what changed in the workspace
 git status
 git diff
-
+```
+```bash
 # Stage specific files instead of bulk adding everything
 git add src/auth.js
-
+```
+```bash
 # Commit with a concise imperative-mood message
 git commit -m "feat: implement JWT token validation"
 ```
@@ -120,10 +128,12 @@ Bring your isolated feature into `main` safely after verifying it passes local c
 # Step 1: Update local main from GitLab to catch teammate changes
 git checkout main
 git pull origin main
-
+```
+```bash
 # Step 2: Merge the feature branch into main
 git merge feature/auth-system
-
+```
+```bash
 # Step 3: Delete the local feature branch once merged
 git branch -d feature/auth-system
 ```
