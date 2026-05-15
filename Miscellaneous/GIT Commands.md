@@ -7,13 +7,18 @@ git push prod dev:main
 ```
 
 ```bash
-# Delete local branch
-git branch -d <branch_name>
+# Rename local branch
+git branch -m <new-name>
 ```
 
 ```bash
-# Rename local branch
-git branch -m <new-name>
+# If you are on a different branch
+git branch -m <old-name> <new-name>
+```
+
+```bash
+# Delete local branch
+git branch -d <branch_name>
 ```
 
 <BR>
