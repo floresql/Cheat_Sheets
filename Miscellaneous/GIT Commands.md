@@ -21,6 +21,11 @@ git branch -m <old-name> <new-name>
 git branch -d <branch_name>
 ```
 
+```bash
+# Remove deleted remote branches from Visual Studio Code
+git fetch --prune
+```
+
 <BR>
 
 ## 1. Git Command Reference
