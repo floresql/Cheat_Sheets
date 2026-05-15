@@ -56,6 +56,7 @@ git branch -d feature/auth-system
 
 ---
 <BR>
+
 ## 2. Multi-Remote Deployment
 
 Execute this dual-push pipeline to ensure your code history is completely safely stored before updating the live ecosystem.
@@ -73,6 +74,7 @@ git push prod main
 
 ---
 <BR>
+
 ## 3. Semantic Commit Examples
 
 Using standard, structured commit message prefixes makes your repository history scannable and easy to read.
@@ -89,6 +91,7 @@ Using standard, structured commit message prefixes makes your repository history
 
 ---
 <BR>
+
 ## 4. Disaster Recovery & Emergency Kits
 
 Quick commands to wipe out local workspace mistakes or roll back file changes.
@@ -110,6 +113,7 @@ git reset --hard origin/main
 
 ---
 <BR>
+
 ## 5. Stashing Workspace Cache
 
 Safely tuck away unfinished progress without making a messy, incomplete commit.
@@ -127,6 +131,7 @@ git stash pop
 
 ---
 <BR>
+
 ## 6. History Logs & Inspection
 
 ```bash
