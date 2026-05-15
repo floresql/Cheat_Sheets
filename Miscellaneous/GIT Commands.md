@@ -6,6 +6,16 @@
 git push prod dev:main
 ```
 
+```bash
+# Delete local branch
+git branch -d <branch_name>
+```
+
+```bash
+# Rename local branch
+git branch -m <new-name>
+```
+
 <BR>
 
 ## 1. Git Command Reference
