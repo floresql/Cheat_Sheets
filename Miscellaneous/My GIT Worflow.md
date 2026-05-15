@@ -4,18 +4,20 @@
 Set up the bare repository and deployment directory on your remote server-prod.
 
 ```bash
-# SSH into your production server
-ssh user@server-ip
+# On the server
+***Make sure you're using UNC Path***
 
 # Create a directory for the live website files
-mkdir -p /var/www/my-app
+mkdir -p \\VM0PWNEROPA6001\NewDirName
 
 # Create a bare Git repository directory
-mkdir -p /home/user/repos/my-app.git
-cd /home/user/repos/my-app.git
+cd "\\VM0PWNEROPA6001\GIT_Repos"
+mkdir project-name.git
+cd project-name.git
 
 # Initialize the bare repository
-git init --bare
+git init --bare --shared
+git branch -m main
 
 # Create and open the post-receive hook file
 nano hooks/post-receive
@@ -27,8 +29,8 @@ Paste the following script into the `hooks/post-receive` file:
 ```bash
 #!/bin/bash
 # Define deployment targets
-TARGET="/var/www/my-app"
-GIT_DIR="/home/user/repos/my-app.git"
+TARGET="\\VM0PWNEROPA6001\my-app"
+GIT_DIR="\\VM0PWNEROPA6001\GIT_Repos\my-app.git"
 
 # Deploy the code to the live directory
 mkdir -p \$TARGET
@@ -66,10 +68,10 @@ Configure your local Git repository remotes:
 
 ```bash
 # Add GitLab as origin
-git remote add origin git@gitlab.com:username/repo-name.git
+git remote add origin git@gitlab.spectrumflow.net:username/repo-name.git
 
 # Add the bare repo on production server as prod
-git remote add prod user@server-ip:/home/user/repos/my-app.git
+git remote add prod \\VM0PWNEROPA6001\GIT_Repos\my-app.git
 
 # Verify setup
 git remote -v
