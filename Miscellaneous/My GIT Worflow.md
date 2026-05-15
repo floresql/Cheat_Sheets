@@ -69,3 +69,59 @@ git push prod main
 ```
 * **Note:** Pushing to `prod` triggers the network-based `post-receive` script automatically. This updates the live directory immediately.
 * **Safety Warning:** Never force push (`git push -f`) to the `prod` remote. Force pushing rewritten history can break files on the live server.
+
+## 3. Best Practice Commit Examples
+Write clear, clean, and scannable history by using standard structured semantic message prefixes.
+
+
+| Prefix | Use Case | Clear Example |
+| :--- | :--- | :--- |
+| **`feat:`** | Creating a completely new capability or component | `git commit -m "feat: add user profile picture upload fallback"` |
+| **`fix:`** | Repairing a bug or fixing an application crash | `git commit -m "fix: resolve memory leak on connection close"` |
+| **`docs:`** | Editing files like README.md, comments, or wikis | `git commit -m "docs: add environment setup variables to readme"` |
+| **`style:`** | Formatting, adding whitespace, or fixing missing semicolons | `git commit -m "style: run prettier formatter on layout templates"` |
+| **`refactor:`**| Rewriting logic without modifying behavior or specs | `git commit -m "refactor: simplify parsing loop inside file reader"` |
+| **`test:`** | Introducing missed unit tests or adding automated coverage| `git commit -m "test: add suite for login endpoint timeout rules"` |
+
+## 4. Disaster Recovery & Emergency Operations
+Quick commands to save your progress or undo local workspace mistakes.
+
+```bash
+# Discard all local unstaged modifications in the folder
+git checkout -- .
+
+# Unstage a file you added by mistake but keep the code intact
+git reset HEAD filename.ext
+
+# Modify the message or contents of your last un-pushed commit
+git commit --amend -m "fix: new exact message description"
+
+# Hard reset your local workspace to match GitLab state completely
+git fetch origin
+git reset --hard origin/main
+```
+
+## 5. Stashing Workspaces
+Safely store unfinished feature progress without forcing a half-baked commit.
+
+```bash
+# Save and hide local modifications onto the stash stack
+git stash -m "wip: incomplete layout adjustment"
+
+# See your list of active stashes
+git stash list
+
+# Re-apply the most recently stashed changes back into your workspace
+git stash pop
+```
+
+## 6. History Logs & Inspection
+Quick shortcuts to inspect your work layout inside Git Bash.
+
+```bash
+# Read a highly compressed, single-line commit history graph
+git log --oneline --graph --decorate
+
+# Inspect changes inside your staged area vs your actual code files
+git diff --staged
+```
