@@ -22,7 +22,7 @@ my_car = Car("Toyota")  # Object instantiation
 
 ---
 
-### 🧬 The 3 Pillars of OOP
+### 🧬 The 4 Pillars of OOP
 
 #### 1. Polymorphism
 * Allows different classes to have methods with the same name.
@@ -68,6 +68,22 @@ class Vehicle(ABC):
         pass
 ```
 💡 **Use Case:** Designing structural architecture templates for large development teams to enforce a consistent API design across different database adapters.
+
+#### 4. Inheritance
+* Allows a child class to adopt attributes and methods from a parent class.
+* Enables code reuse and hierarchies.
+* Supports overriding parent methods or expanding them via `super()`.
+
+```python
+class ElectricCar(Car):  # Child inherits from Car parent
+    def __init__(self, brand, battery_size):
+        super().__init__(brand)  # Links to parent constructor
+        self.battery_size = battery_size
+
+    def charge(self):
+        return "Charging battery..."
+```
+💡 **Use Case:** Modeling shared system user types where a base `User` class shares basic login logic with specialized `Admin` and `Customer` child subclasses.
 
 ---
 
