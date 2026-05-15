@@ -82,12 +82,12 @@ Using standard, structured commit message prefixes makes your repository history
 
 | Prefix | Core Purpose | Concrete Git Bash Example |
 | :--- | :--- | :--- |
-| ✨ **`feat:`** | Introducing a brand new asset or function | `git commit -m "feat: add user profile picture upload fallback"` |
-| 🐛 **`fix:`** | Repairing an error, crash, or flawed logic | `git commit -m "fix: resolve memory leak on connection close"` |
-| 📝 **`docs:`** | Editing documentation, READMEs, or comments | `git commit -m "docs: add environment setup variables to readme"` |
-| 🎨 **`style:`**| Formatting, spacing, or fixing code styling | `git commit -m "style: run prettier formatter on layout templates"` |
-| ⚡ **`refactor:`**| Rewriting logic without altering functional specs | `git commit -m "refactor: simplify parsing loop inside file reader"` |
-| 🧪 **`test:`** | Adding missing unit tests or test coverage suites | `git commit -m "test: add suite for login endpoint timeout rules"` |
+| **`feat:`** | Introducing a brand new asset or function | `git commit -m "feat: add user profile picture upload fallback"` |
+| **`fix:`** | Repairing an error, crash, or flawed logic | `git commit -m "fix: resolve memory leak on connection close"` |
+| **`docs:`** | Editing documentation, READMEs, or comments | `git commit -m "docs: add environment setup variables to readme"` |
+| **`style:`**| Formatting, spacing, or fixing code styling | `git commit -m "style: run prettier formatter on layout templates"` |
+| **`refactor:`**| Rewriting logic without altering functional specs | `git commit -m "refactor: simplify parsing loop inside file reader"` |
+| **`test:`** | Adding missing unit tests or test coverage suites | `git commit -m "test: add suite for login endpoint timeout rules"` |
 
 ---
 <BR>
