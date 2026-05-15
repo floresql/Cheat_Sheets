@@ -3,19 +3,18 @@
 ## 1. Production Server Configuration
 Set up the bare repository and deployment directory on your remote server-prod.
 
-
 ## On the server
-***Make sure you're using UNC Path***
+***Make sure you're using UNC Paths with forward slashes for Git compatibility***
 
 ```bash
 # Create a directory for the live website files
-mkdir -p \\VM0PWNEROPA6001\NewDirName
+mkdir -p //VM0PWNEROPA6001/NewDirName
 ```
 ```bash
 # Create a bare Git repository directory
-cd "\\VM0PWNEROPA6001\GIT_Repos"
-mkdir project-name.git
-cd project-name.git
+cd "//VM0PWNEROPA6001/GIT_Repos"
+mkdir your-project-name.git
+cd your-project-name.git
 ```
 ```bash
 # Initialize the bare repository
@@ -33,8 +32,8 @@ Paste the following script into the `hooks/post-receive` file:
 ```bash
 #!/bin/bash
 # Define deployment targets
-TARGET="\\VM0PWNEROPA6001\my-app"
-GIT_DIR="\\VM0PWNEROPA6001\GIT_Repos\my-app.git"
+TARGET="//VM0PWNEROPA6001/NewDirName"
+GIT_DIR="//VM0PWNEROPA6001/GIT_Repos/your-project-name.git"
 
 # Deploy the code to the live directory
 mkdir -p \$TARGET
@@ -79,7 +78,7 @@ git remote add origin git@gitlab.spectrumflow.net:username/repo-name.git
 ```
 ```bash
 # Add the bare repo on production server as prod
-git remote add prod \\VM0PWNEROPA6001\GIT_Repos\my-app.git
+git remote add prod //VM0PWNEROPA6001/GIT_Repos/your-project-name.git
 ```
 ```bash
 # Verify setup
@@ -153,5 +152,5 @@ git push origin main
 # Step 2: Deploy verified code to your production server (Prod)
 git push prod main
 ```
-* **Note:** Pushing to `prod` triggers the server-side `post-receive` script automatically. This updates the `/var/www/my-app` directory immediately.
+* **Note:** Pushing to `prod` triggers the server-side `post-receive` script automatically. This updates the live directory immediately.
 * **Safety Warning:** Never force push (`git push -f`) to the `prod` remote. Force pushing rewritten history can break files on the live server.
