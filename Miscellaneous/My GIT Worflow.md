@@ -1,21 +1,21 @@
-# 🚀 Git Multi-Remote Feature Workflow Cheat Sheet
+# Git Multi-Remote Feature Workflow Cheat Sheet
 
 An absolute reference guide for isolating features, managing commits, and executing safe deployments across **GitLab (Origin)** and your **Windows Network Server (Prod)**.
 
 ---
 
-## 🛑 Fundamental Golden Rules
+## Fundamental Golden Rules
 1. **Never write code directly on `main`.**
 2. **Always pull** from GitLab before starting a new feature branch.
 3. **Always push to GitLab (`origin`)** before deploying to the production server (`prod`).
 
 ---
 
-## 🛠️ 1. Feature Development Lifecycle
+## 1. Feature Development Lifecycle
 
 Follow this exact sequence to isolate your work, track updates, and protect production.
 
-### 🌿 Step A: Branching & Isolation
+### Step A: Branching & Isolation
 ```bash
 # 1. Switch to main and sync with the latest remote team changes
 git checkout main
@@ -26,7 +26,7 @@ git checkout -b feature/auth-system
 ```
 > 💡 **Branch Naming Tip:** Keep history organized by prefixing branch names: `feature/xyz`, `bugfix/xyz`, or `hotfix/xyz`.
 
-### 💾 Step B: Staging & Granular Commits
+### Step B: Staging & Granular Commits
 ```bash
 # 1. Inspect what files were modified or created
 git status
@@ -40,7 +40,7 @@ git commit -m "feat: implement JWT token validation"
 ```
 > 💡 **Commit Tip:** Aim for *atomic commits*. If a feature contains both a database change and a layout change, split them into two separate commits.
 
-### 🤝 Step C: Merging & Syncing
+### Step C: Merging & Syncing
 ```bash
 # 1. Head back to main and catch up with GitLab once more
 git checkout main
@@ -55,8 +55,8 @@ git branch -d feature/auth-system
 > 💥 **Conflict Resolution:** If a conflict breaks your merge, run `git status` to find the problem files. Look for the `<<<<<<<` and `>>>>>>>` markers, clean up the conflicting code, then finalize with `git add .` and `git commit`.
 
 ---
-
-## 🚢 2. Multi-Remote Deployment
+<BR>
+## 2. Multi-Remote Deployment
 
 Execute this dual-push pipeline to ensure your code history is completely safely stored before updating the live ecosystem.
 
@@ -72,8 +72,8 @@ git push prod main
 > ⚠️ **CRITICAL WARNING:** Never run a force push (`git push -f`) against the `prod` remote. Forcing rewritten history can break files actively serving live web traffic.
 
 ---
-
-## 📝 3. Semantic Commit Examples
+<BR>
+## 3. Semantic Commit Examples
 
 Using standard, structured commit message prefixes makes your repository history scannable and easy to read.
 
@@ -88,8 +88,8 @@ Using standard, structured commit message prefixes makes your repository history
 | 🧪 **`test:`** | Adding missing unit tests or test coverage suites | `git commit -m "test: add suite for login endpoint timeout rules"` |
 
 ---
-
-## 🛡️ 4. Disaster Recovery & Emergency Kits
+<BR>
+## 4. Disaster Recovery & Emergency Kits
 
 Quick commands to wipe out local workspace mistakes or roll back file changes.
 
@@ -109,8 +109,8 @@ git reset --hard origin/main
 ```
 
 ---
-
-## 📦 5. Stashing Workspace Cache
+<BR>
+## 5. Stashing Workspace Cache
 
 Safely tuck away unfinished progress without making a messy, incomplete commit.
 
@@ -126,8 +126,8 @@ git stash pop
 ```
 
 ---
-
-## 🔍 6. History Logs & Inspection
+<BR>
+## 6. History Logs & Inspection
 
 ```bash
 # Read a highly compressed, beautifully structured branch/commit tree
