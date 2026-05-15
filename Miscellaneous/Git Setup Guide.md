@@ -1,4 +1,4 @@
-# Git Multi-Remote Setup Guide (GitLab & Windows Network Prod Server)
+# Git Setup Guide (GitLab & Windows Network Prod Server)
 
 ## 1. Production Server Configuration
 Set up the bare repository and deployment directory on your remote network share server via Git Bash.
@@ -53,6 +53,7 @@ Make the hook script executable:
 ```bash
 chmod +x hooks/post-receive
 ```
+<BR>
 
 ## 2. Local Machine Authentication & Setup
 Generate SSH keys locally within Git Bash and link them to GitLab for seamless authentication.
