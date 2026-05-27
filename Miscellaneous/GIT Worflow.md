@@ -18,8 +18,8 @@ Follow this exact sequence to isolate your work, track updates, and protect prod
 ### Step A: Branching & Isolation
 ```bash
 # 1. Switch to main and sync with the latest remote team changes
-git checkout main
-git pull origin main
+git checkout dev
+git pull origin dev
 
 # 2. Spin up a fresh, isolated feature branch
 git checkout -b feature/auth-system
