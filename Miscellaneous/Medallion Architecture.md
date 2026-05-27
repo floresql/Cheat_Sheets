@@ -1,4 +1,4 @@
-# 🥇 Medallion Architecture Folder Structure Cheat Sheet
+# Medallion Architecture Folder Structure Cheat Sheet
 
 A quick reference guide for structuring directories in a modern Data Lakehouse (Databricks, Fabric, Snowflake, AWS S3).
 
