@@ -43,8 +43,8 @@ git commit -m "feat: implement JWT token validation"
 ### Step C: Merging & Syncing
 ```bash
 # 1. Head back to main and catch up with GitLab once more
-git checkout main
-git pull origin main
+git checkout dev
+git pull origin dev
 
 # 2. Merge your completed feature branch locally
 git merge feature/auth-system
@@ -63,11 +63,11 @@ Execute this dual-push pipeline to ensure your code history is completely safely
 
 ```bash
 # Pipeline Step 1: Backup and share your history with the team on GitLab
-git checkout main
-git push origin main
+git checkout dev
+git push origin dev
 
 # Pipeline Step 2: Push directly to the network share to trigger the server checkout script
-git push prod main
+git push prod dev:main
 ```
 
 > ⚠️ **CRITICAL WARNING:** Never run a force push (`git push -f`) against the `prod` remote. Forcing rewritten history can break files actively serving live web traffic.
