@@ -4,7 +4,7 @@ A quick reference guide for structuring directories in a modern Data Lakehouse (
 
 ---
 
-## 🏗️ Core Directory Hierarchy
+## Core Directory Hierarchy
 
 ```text
 lakehouse/
@@ -21,7 +21,7 @@ lakehouse/
 
 ---
 
-## 💿 Layer Breakdown & Folder Naming Rules
+## Layer Breakdown & Folder Naming Rules
 
 ### 🥉 1. Bronze Layer (`01_bronze` / `raw`)
 * **Purpose**: Landing zone for untransformed data copied "as-is" from external sources.
@@ -49,7 +49,7 @@ lakehouse/
 
 ---
 
-## 📋 Naming Conventions & Best Practices
+## Naming Conventions & Best Practices
 
 * **Case Style**: Always use `snake_case` for folder and table names. Avoid spaces.
 * **No Abbreviations**: Spell out words completely (e.g., `customer_orders`, not `cust_ord`).
