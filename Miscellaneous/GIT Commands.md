@@ -6,26 +6,6 @@
 git push prod dev:main
 ```
 
-```bash
-# Rename local branch
-git branch -m <new-name>
-```
-
-```bash
-# If you are on a different branch
-git branch -m <old-name> <new-name>
-```
-
-```bash
-# Delete local branch
-git branch -d <branch_name>
-```
-
-```bash
-# Remove deleted remote branches from Visual Studio Code
-git fetch --prune
-```
-
 <BR>
 
 ## 1. Git Command Reference
@@ -55,6 +35,10 @@ git branch --show-current          # Print only the name of the current branch
 # Actions & Merges
 git switch -c <name>               # Create and switch to new branch
 git switch <name>                  # Switch to existing branch
+git branch -m <new-name>           # Rename local branch
+git branch -m <old-name> <new-name># If you are on a different branch
+git branch -d <branch_name>        # Delete local branch
+git fetch --prune                  # Remove deleted remote branches from Visual Studio Code
 git merge <branch>                 # Merge <branch> into current branch
 git branch -d <branch>             # Delete a merged local branch
 ```
