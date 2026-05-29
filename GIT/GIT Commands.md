@@ -1,13 +1,5 @@
 # GIT Cheat Sheet
 
-## 0.  Stuff I'm using now
-```bash
-# Push to Prod
-git push prod dev:main
-```
-
-<BR>
-
 ## 1. Git Command Reference
 
 ### Basics & Configuration
