@@ -1,5 +1,4 @@
 # GIT Cheat Sheet
-
 ## 1. Git Command Reference
 
 ### Basics & Configuration
@@ -63,11 +62,17 @@ git stash                          # Temporarily shelf uncommitted changes
 git stash pop                      # Bring stashed changes back
 ```
 
+### Refreshing .gitignore (After Merges)
+```bash
+# Clear Git cache to apply new .gitignore rules to already-tracked files
+git rm -r --cached .               # Unstage everything (does NOT delete files)
+git add .                          # Re-add all files while applying new ignore rules
+git commit -m "Apply updated .gitignore" # Commit the index refresh
+```
+
 ---
 
 ## 2. Reset Modes & Inspection
-
-
 
 | Command | Effect on Staging | Effect on Working Directory |
 | :--- | :--- | :--- |
