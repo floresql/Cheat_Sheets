@@ -1,5 +1,13 @@
 # GIT Cheat Sheet
 
+## 0.  Stuff I'm using now
+```bash
+# Push to Prod
+git push prod dev:main
+```
+
+<BR>
+
 ## 1. Git Command Reference
 
 ### Basics & Configuration
@@ -29,6 +37,7 @@ git switch -c <name>               # Create and switch to new branch
 git switch <name>                  # Switch to existing branch
 git branch -m <new-name>           # Rename local branch
 git branch -m <old-name> <new-name># If you are on a different branch
+git branch -d <branch_name>        # Delete local branch
 git fetch --prune                  # Remove deleted remote branches from Visual Studio Code
 git merge <branch>                 # Merge <branch> into current branch
 git branch -d <branch>             # Delete a merged local branch
