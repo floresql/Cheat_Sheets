@@ -59,6 +59,12 @@ git reset <file>                   # Unstage <file>, keep workspace changes
 git revert <commit>                # Create a new commit that undoes <commit>
 git stash                          # Temporarily shelf uncommitted changes
 git stash pop                      # Bring stashed changes back
+
+# Going Back to Old Commits
+git checkout <commit>              # Safely look around / test an old commit (Detached HEAD)
+git reset <commit>                 # Undo commits up to <commit>, keep your code changes
+git reset --hard <commit>          # Rewrites history, permanently deletes newer work
+git revert <commit>                # Safe for shared branches, creates a counter-commit
 ```
 
 ### Refreshing .gitignore (After Merges)
@@ -73,18 +79,22 @@ git commit -m "Apply updated .gitignore" # Commit the index refresh
 
 ## 2. Reset Modes & Inspection
 
-| Command | Effect on Staging | Effect on Working Directory |
-| :--- | :--- | :--- |
-| `git reset` | Resets to match last commit | Changes are KEPT |
-| `git reset --hard` | Resets to match last commit | Changes are DELETED |
-| `git reset <commit>` | Resets to specific commit | Changes are KEPT |
-| `git reset --hard <commit>` | Resets to specific commit | Changes are DELETED |
 
-### Git Log (Inspection)
-* **`git log --oneline`**: Condense history to single lines.
+| Command | Effect on Staging | Effect on Working Directory | Safe for Shared Remotes? |
+| :--- | :--- | :--- | :--- |
+| `git reset` | Resets to match last commit | Changes are KEPT | Yes (Local only) |
+| `git reset --hard` | Resets to match last commit | Changes are DELETED | No (Destructive) |
+| `git reset <commit>` | Resets to specific commit | Changes are KEPT | No (Rewrites branch) |
+| `git reset --hard <commit>` | Resets to specific commit | Changes are DELETED | No (Destructive rewrite) |
+| `git checkout <commit>` | None (Switches views) | Temporarily changed | Yes (Read-only view) |
+| `git revert <commit>` | Creates a new commit | Applies reverse changes | Yes (Safe for team branches) |
+
+### Git Log & Navigation (Inspection)
+* **`git log --oneline`**: Condense history to single lines to easily find target commit hashes.
 * **`git log --graph --decorate`**: Visual text-based branch graph.
 * **`git log -<limit>`**: Show only the last N commits (e.g., `git log -5`).
 * **`git log --grep="pattern"`**: Search commit messages for a pattern.
+* **`git checkout main`**: Return safely back to the present branch after using `git checkout <commit>`.
 
 ---
 
