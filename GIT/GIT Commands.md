@@ -1,5 +1,4 @@
 # GIT Cheat Sheet
-## 1. Git Command Reference
 
 ### Basics & Configuration
 ```bash
