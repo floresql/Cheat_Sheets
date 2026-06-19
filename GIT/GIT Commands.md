@@ -13,94 +13,151 @@ git clone <url>                    # Clone a remote repo
 git status                         # View staged/unstaged changes
 ```
 
-### Branching & Merging
-```bash
-# Inspection & Listing
-git branch                         # List your local branches (current marked with *)
-git branch -r                      # List all remote tracking branches
-git branch -a                      # List all branches (both local and remote)
-git branch -v                      # List local branches with latest commit message (verbose)
-git branch -vv                     # Show local branches with extra details and upstream tracking
-git branch --show-current          # Print only the name of the current branch
+## 1. The Daily Workflow (Stage & Commit)
 
-# Actions & Merges
-git switch -c <name>               # Create and switch to new branch
-git switch <name>                  # Switch to existing branch
-git branch -m <new-name>           # Rename local branch
-git branch -m <old-name> <new-name># If you are on a different branch
-git fetch --prune                  # Remove deleted remote branches from Visual Studio Code
-git merge <branch>                 # Merge <branch> into current branch
-git branch -d <branch>             # Delete a merged local branch
+### Tracking Changes
+```bash
+git status                           # Check staged, unstaged, and untracked files
+git status -s                        # Short, compact version of status
+git add <file>                       # Stage a specific file for the next commit
+git add .                            # Stage all modified and untracked files
+git add -p                           # Interactively stage parts of files (hunks)
 ```
 
-### Remote Synchronization
+### Committing & Stashing
 ```bash
-# Manage Remotes
-git remote add <name> <url>        # Link local repo to a remote source
-git remote add gitlab git@gitlab.com:username/repo.git # Add GitLab as a remote
-git remote add production ssh://user@your-server.com # Add your remote server as a remote
-git remote remove <remote_name>    # Remove a defined remote configuration
-
-# Sync Data
-git fetch <remote>                 # Download objects/refs from remote
-git pull <remote> <branch>         # Fetch and immediately merge
-git push -u origin <branch>        # Push and set upstream tracking
-git push gitlab main               # Push specific branch to GitLab remote
-git push origin --delete <branch>  # Delete remote branch
-git push <remote> --tags           # Push local tags to remote
-```
-
-### Undoing & Rewriting History
-```bash
-git add <file>                     # Stage changes
-git commit -m "message"            # Commit staged changes
-git commit --amend                 # Edit last commit or add staged changes to it
-git reset <file>                   # Unstage <file>, keep workspace changes
-git revert <commit>                # Create a new commit that undoes <commit>
-git stash                          # Temporarily shelf uncommitted changes
-git stash pop                      # Bring stashed changes back
-
-# Going Back to Old Commits
-git checkout <commit>              # Safely look around / test an old commit (Detached HEAD)
-git reset <commit>                 # Undo commits up to <commit>, keep your code changes
-git reset --hard <commit>          # Rewrites history, permanently deletes newer work
-git revert <commit>                # Safe for shared branches, creates a counter-commit
-```
-
-### Refreshing .gitignore (After Merges)
-```bash
-# Clear Git cache to apply new .gitignore rules to already-tracked files
-git rm -r --cached .               # Unstage everything (does NOT delete files)
-git add .                          # Re-add all files while applying new ignore rules
-git commit -m "Apply updated .gitignore" # Commit the index refresh
+git commit -m "message"              # Commit staged changes with a descriptive message
+git commit -am "message"             # Shortcut to stage tracked files and commit in one go
+git commit --amend --no-edit         # Add staged changes to last commit without changing message
+git stash -u                         # Shelf uncommitted changes, including untracked files
+git stash pop                        # Re-apply the last stashed changes and delete them from stash
+git stash list                       # View all saved items in your stash stack
 ```
 
 ---
 
-## 2. Reset Modes & Inspection
+## 2. Team Branching & Merging (GitHub Flow)
 
+### Branch Inspection
+```bash
+git branch                           # List local branches (* shows current)
+git branch -r                        # List remote tracking branches
+git branch -a                        # List all local and remote branches
+git branch -vv                       # Show local branches, latest commit, and upstream tracking
+git branch --show-current            # Print only the name of the active branch
+```
 
-| Command | Effect on Staging | Effect on Working Directory | Safe for Shared Remotes? |
-| :--- | :--- | :--- | :--- |
-| `git reset` | Resets to match last commit | Changes are KEPT | Yes (Local only) |
-| `git reset --hard` | Resets to match last commit | Changes are DELETED | No (Destructive) |
-| `git reset <commit>` | Resets to specific commit | Changes are KEPT | No (Rewrites branch) |
-| `git reset --hard <commit>` | Resets to specific commit | Changes are DELETED | No (Destructive rewrite) |
-| `git checkout <commit>` | None (Switches views) | Temporarily changed | Yes (Read-only view) |
-| `git revert <commit>` | Creates a new commit | Applies reverse changes | Yes (Safe for team branches) |
+### Feature Branching & Modification
+```bash
+git switch <name>                    # Move to an existing branch
+git switch -c <name>                 # Create a new feature branch and switch to it
+git branch -m <new-name>             # Rename the current active branch
+git branch -m <old-name> <new-name>  # Rename a branch while standing on a different one
+git branch -d <branch>               # Delete a fully merged local feature branch
+git branch -D <branch>               # Force delete a local branch (loses unmerged work)
+```
 
-### Git Log & Navigation (Inspection)
-* **`git log --oneline`**: Condense history to single lines to easily find target commit hashes.
-* **`git log --graph --decorate`**: Visual text-based branch graph.
-* **`git log -<limit>`**: Show only the last N commits (e.g., `git log -5`).
-* **`git log --grep="pattern"`**: Search commit messages for a pattern.
-* **`git checkout main`**: Return safely back to the present branch after using `git checkout <commit>`.
+### Integrating Team Changes
+```bash
+git merge <branch>                   # Merge <branch> into your current active branch
+git merge --abort                    # Stop a conflicted merge and revert back to pre-merge state
+git cherry-pick <commit>             # Copy a single specific commit from another branch into yours
+git rebase main                      # Reapply your branch commits on top of the latest main branch
+```
 
 ---
 
-## 3. General Best Practices
-* **Keep branches short-lived**: Focus on a single feature or fix per branch.
-* **Pull frequently**: Reduce merge conflicts by staying updated with `develop`.
-* **Review before merging**: Always test and review code before it hits `main`.
-* **Never `push --force`**: Unless you are 100% sure and working on a private feature branch.
-* **Use `.gitignore`**: Ensure `.env`, `node_modules`, and OS files (like `.DS_Store`) are never tracked.
+## 3. Remote Synchronization & Deployment
+
+### Syncing with the Team (GitLab Dev)
+```bash
+git fetch dev --prune                # Download team data and prune deleted remote branches
+git pull --rebase dev main           # Get latest team updates from main and rebase your work on top
+git push -u dev <feature-branch>     # Push feature branch to GitLab for your teammate to review
+
+git push dev --delete <feature-branch> # Delete feature branch from GitLab after it is merged
+```
+
+### Deploying to Production (Server Remote)
+```bash
+git checkout main                    # Switch to your local production-ready branch
+git pull --rebase prod main           # Ensure local main matches the latest reviewed GitLab main
+git push prod main                   # Push to prod remote to trigger the server post-receive hook
+```
+
+### Workflow: Temporarily Change Tracked Upstream
+Use this sequence if you need the literal output of `git status` to temporarily track and align with an alternate remote repository or branch without destroying your primary configuration.
+```bash
+git branch -u <remote-name>/<branch-name> # 1. Re-bind tracking upstream to alternate remote/branch
+git fetch <remote-name>                   # 2. Fetch changes from the alternate target
+git status                                #    Check status against the alternate target
+git branch -u dev/main                    # 3. Restore original remote tracking target when finished
+```
+
+---
+
+## 4. Inspection & History
+
+### Log Navigation
+```bash
+git log --oneline                    # View history compressed into single lines with short hashes
+git log -n 5                         # Limit history output to the last 5 commits
+git log --graph --oneline --decorate --all # Visual ASCII text tree of all branches and merges
+git log --grep="pattern"             # Search commit messages for specific text string
+git log -S "code_string"             # Search through code changes for specific text
+git diff                             # Show differences between working directory and staging area
+git diff --staged                    # Show differences between staging area and last commit
+```
+
+### Time Travel (Safe View)
+```bash
+git checkout <commit>                # Switch to detached HEAD state to safely test old code
+git switch -                         # Jump safely back to your previous active branch
+```
+
+---
+
+## 5. Undoing Mistakes & History Rewriting
+
+### Reset Matrices
+
+
+| Command | Effect on Staging Area | Effect on Working Directory | Safe for Shared Remotes? | Best Use Case |
+| :--- | :--- | :--- | :--- | :--- |
+| `git reset <commit>` | Resets to match `<commit>` | Keeps your code files untouched | **No** (Local branch only) | Uncommit changes to edit them |
+| `git reset --hard <commit>` | Resets to match `<commit>` | **Destroys** all unstaged files/code | **No** (Destructive) | Throw away unwanted work completely |
+| `git revert <commit>` | Creates a new safe commit | Appends changes safely | **Yes** (Safe for team work) | Undo a bug introduced in shared main branch |
+
+### Interactive Cleanup (Do before pushing to dev)
+```bash
+git commit --amend                   # Open text editor to modify the message of the last commit
+git reset HEAD~1                     # Undo the last commit, move changes back to working directory
+git rebase -i HEAD~3                 # Interactively squash, edit, or delete the last 3 commits
+```
+
+---
+
+## 6. Maintenance & Cache Operations
+
+### Refreshing `.gitignore`
+If you add files to `.gitignore` after they have already been tracked, Git will continue to track them. Run this exact sequence to purge the cache and apply your newly updated ignore rules without deleting your actual physical files:
+```bash
+git rm -r --cached .                 # 1. Unstage all files from the index cache (safe)
+git add .                            # 2. Re-index all files while applying new .gitignore rules
+git commit -m "Apply .gitignore"     # 3. Commit the cleaned up index tree
+```
+
+### Housekeeping
+```bash
+git clean -fd                        # Force remove all untracked files/directories from work tree
+git gc --prune=now                   # Run garbage collection to optimize local storage size
+```
+
+---
+
+## 7. General Best Practices for Two-Person Teams
+* **Atomic Commits**: Group only related changes into a single commit. Do not mix features with formatting fixes.
+* **Pull Before Push**: Always run `git pull --rebase` before running a `git push` to resolve conflicts early.
+* **Keep Feature Branches Short**: Merge branches back to your main tracking branch quickly to reduce long-term merge conflict debt with your partner.
+* **Never Force Push Shared History**: Do not run `git push --force` on the shared `dev` main or `prod` main. Use `git revert` instead. If you must modify an unmerged feature branch, use `git push --force-with-lease`.
+* **Lock Sensitive Data Early**: Ensure `.env`, local configuration files, and heavy dependency directories (like `node_modules` or `vendor/`) are added to `.gitignore` before making your first repository commit.
