@@ -1,25 +1,26 @@
 # My Git Workflow Cheat Sheet
 
-An absolute reference guide for isolating features, managing commits, and executing safe deployments across **GitLab (Origin)** and your **Windows Network Server (Prod)**.
+An absolute reference guide for isolating features, managing team code reviews via GitLab, and executing safe deployments to our **Windows Network Server (Prod)**.
 
 ---
 
 ## Fundamental Golden Rules
 1. **Never write code directly on `main`.**
-2. **Always pull** from GitLab before starting a new feature branch.
-3. **Always push to GitLab (`origin`)** before deploying to the production server (`prod`).
+2. **Always pull** from GitLab (`dev`) before starting a new feature branch.
+3. **Never merge locally.** All feature branches must be merged via a GitLab Merge Request (MR) after a peer review.
+4. **Always push to GitLab (`dev`)** and pass code review before deploying to the production server (`prod`).
 
 ---
 
 ## 1. Feature Development Lifecycle
 
-Follow this exact sequence to isolate your work, track updates, and protect production.
+Follow this exact sequence to isolate your work, collaborate via code reviews, and safely update production.
 
 ### Step A: Branching & Isolation
 ```bash
 # 1. Switch to main and sync with the latest remote team changes
-git checkout dev
-git pull origin dev
+git checkout main
+git pull dev main
 
 # 2. Spin up a fresh, isolated feature branch
 git checkout -b feature/auth-system
@@ -40,34 +41,51 @@ git commit -m "feat: implement JWT token validation"
 ```
 > 💡 **Commit Tip:** Aim for *atomic commits*. If a feature contains both a database change and a layout change, split them into two separate commits.
 
-### Step C: Merging & Syncing
+### Step C: Pushing & GitLab Merge Request (Code Review & Approval)
 ```bash
-# 1. Head back to main and catch up with GitLab once more
-git checkout dev
-git pull origin dev
+# Option 1: Native Git push that automatically builds your GitLab MR
+git push dev -o merge_request.create -o merge_request.target=main -o merge_request.reviewer="teammate_username"
 
-# 2. Merge your completed feature branch locally
-git merge feature/auth-system
+# Option 2: Basic push and manual setup
+git push dev feature/auth-system
+#    - Open GitLab in your browser and click "Create Merge Request".
+#    - Assign a teammate to review your code.
+```
+> 🔄 **Handling Mid-Review Updates:** If a reviewer asks for changes, or if `main` moves ahead while you wait, update your branch locally and push again:
+```bash
+# Sync your branch with any new updates from other team members
+git pull dev main
 
-# 3. Safely wipe out the local feature branch once it is merged
+# Make your fixes, commit, and push (the MR updates automatically)
+git add .
+git commit -m "fix: address PR review feedback on token expiration"
+git push dev feature/auth-system
+```
+
+### Step D: The Merge & Local Cleanup
+> ⚠️ **CRITICAL:** Do not merge locally. Once approved, click **"Squash and Merge"** directly inside the GitLab web interface. This condenses your development commits into one clean historical entry on `main`.
+
+```bash
+# Once merged on GitLab, clean up your local computer workspace:
+git checkout main
+git pull dev main
 git branch -d feature/auth-system
 ```
-> 💥 **Conflict Resolution:** If a conflict breaks your merge, run `git status` to find the problem files. Look for the `<<<<<<<` and `>>>>>>>` markers, clean up the conflicting code, then finalize with `git add .` and `git commit`.
 
 ---
 <BR>
 
-## 2. Multi-Remote Deployment
+## 2. Multi-Remote Deployment Pipeline
 
-Execute this dual-push pipeline to ensure your code history is completely safely stored before updating the live ecosystem.
+Once your Merge Request is successfully merged into `main` on GitLab, execute this sequence to sync your local environment and deploy the final code to production.
 
 ```bash
-# Pipeline Step 1: Backup and share your history with the team on GitLab
-git checkout dev
-git push origin dev
+# 1. Pull the newly merged and squashed main branch down from GitLab
+git checkout main
+git pull dev main
 
-# Pipeline Step 2: Push directly to the network share to trigger the server checkout script
-git push prod dev:main
+# 2. Push directly to the network share to trigger the server checkout script
+git push prod main
 ```
 
 > ⚠️ **CRITICAL WARNING:** Never run a force push (`git push -f`) against the `prod` remote. Forcing rewritten history can break files actively serving live web traffic.
@@ -78,6 +96,8 @@ git push prod dev:main
 ## 3. Semantic Commit Examples
 
 Using standard, structured commit message prefixes makes your repository history scannable and easy to read.
+
+
 
 
 | Prefix | Core Purpose | Concrete Git Bash Example |
@@ -107,8 +127,8 @@ git reset HEAD filename.ext
 git commit --amend -m "fix: new exact message description"
 
 # Hard reset your entire local branch to perfectly mirror GitLab
-git fetch origin
-git reset --hard origin/main
+git fetch dev
+git reset --hard dev/main
 ```
 
 ---
